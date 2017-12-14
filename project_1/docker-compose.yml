@@ -12,7 +12,7 @@ services:
       traefik.enable: "true"
       traefik.port: "80"
       traefik.frontend.priority: "10"
-      traefik.frontend.rule: "Host: buffy.my.to, 192.168.178.37"
+      traefik.frontend.rule: "Host:raspberrypi, buffy.my.to"
     environment:
       - http_proxy
       - https_proxy
