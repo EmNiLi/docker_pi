@@ -1,0 +1,10 @@
+version: "2"
+volumes:
+ gogs: {}
+services:
+ gogs:
+  image: hypriot/rpi-gogs-raspbian
+  ports:
+   - "3000:3000"
+  volumes:
+          - gogs:/gogs-data
