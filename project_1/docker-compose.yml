@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 networks:
   default:
     external:
@@ -12,7 +12,7 @@ services:
       traefik.enable: "true"
       traefik.port: "80"
       traefik.frontend.priority: "10"
-      traefik.frontend.rule: "Host:raspberrypi, buffy.my.to"
+      traefik.frontend.rule: "HostRegexp:{subdomain:[a-z]+}.level14.de"
     environment:
       - http_proxy
       - https_proxy
