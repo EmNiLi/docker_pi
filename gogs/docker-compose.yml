@@ -1,4 +1,8 @@
-version: "2"
+version: "3"
+networks:
+  default:
+    external:
+      name: proxy
 volumes:
  gogs: {}
 services:
@@ -6,7 +10,10 @@ services:
   container_name: gogs
   restart: unless-stopped
   image: hypriot/rpi-gogs-raspbian
-  ports:
-   - "3000:3000"
   volumes:
-          - gogs:/gogs-data
+    - gogs:/gogs-data
+  labels:
+    traefik.enable: "true"
+    traefik.port: "3000"
+    traefik.frontend.rule: "Host:buffy.level14.de"
+    traefik.frontend.priority: "120"
