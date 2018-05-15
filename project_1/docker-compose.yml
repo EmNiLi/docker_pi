@@ -21,4 +21,8 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/sites-enabled/default
       - ${PWD}:/app
-
+  php:
+    image: tobi312/rpi-php
+    container_name: php1
+    volumes:
+      - ${PWD}:/app
