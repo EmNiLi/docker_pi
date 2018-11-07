@@ -22,8 +22,12 @@ services:
       - ./nginx.conf:/etc/nginx/sites-enabled/default
       - ${PWD}:/app
   php:
-    image: sergeytykhonov/rpi-php:7.1-fpm
+    image: shaula/rpi-php7-fpm:7.1
     container_name: php2
     restart: unless-stopped
     volumes:
       - ${PWD}:/app
+  postgres:
+    image: tobi312/rpi-postgresql
+    container_name: postgres
+    restart: unless-stopped
