@@ -5,29 +5,29 @@ networks:
       name: proxy
 services:
   project:
-    image: tobi312/rpi-nginx
+    image: emnili/rpi-nginx
     container_name: project2
     restart: unless-stopped
     labels:
       traefik.enable: "true"
       traefik.port: "80"
       traefik.frontend.priority: "10"
-      traefik.frontend.rule: "Host: 192.168.178.52"
+      traefik.frontend.rule: "Host: 192.168.178.58"
     environment:
       - http_proxy
       - https_proxy
       - ftp_proxy
       - no_proxy
     volumes:
-      - ./nginx.conf:/etc/nginx/sites-enabled/default
-      - ${PWD}:/app
+      - ./nginx.conf:/app/nginx.conf
+      - ${PWD}/app:/app
   php:
-    image: shaula/rpi-php7-fpm:7.1
-    container_name: php2
+    image: emnili/rpi-php
+    container_name: php
     restart: unless-stopped
     volumes:
-      - ${PWD}:/app
+      - ${PWD}/app:/app
   postgres:
-    image: tobi312/rpi-postgresql
+    image: emnili/rpi-postgres
     container_name: postgres
     restart: unless-stopped
